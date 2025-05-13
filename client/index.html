@@ -1,0 +1,113 @@
+<!--index.html -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Fusion Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h2 class="text-center mb-4 page-title">Image Fusion Tool</h2>
+
+        <div class="form-container">
+            <form id="fusionForm">
+                <div class="row g-4">
+                    <!-- Input Images Section -->
+                    <div class="col-lg-6">
+                        <div class="h-100 d-flex flex-column">
+                            <h4 class="mb-3 section-header">Input Images</h4>
+
+                            <!-- Images-->
+                            <div class="input-images-container">
+                                <!-- Image 1 -->
+                                <div class="input-image-box">
+                                    <img id="preview1" src="" alt="Preview Image 1" class="img-fluid preview-img">
+                                    <select class="form-select mb-2" id="image1Select" required>
+                                        <option>Loading...</option>
+                                    </select>
+                                </div>
+
+                                <!-- Image 2 -->
+                                <div class="input-image-box">
+                                    <img id="preview2" src="" alt="Preview Image 2" class="img-fluid preview-img">
+                                    <select class="form-select mb-2" id="image2Select" required>
+                                        <option>Loading...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="fusion-controls mb-3">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center flex-grow-1 me-3">
+                                        <label class="form-label mb-0 me-3 fw-semibold">Fusion Method:</label>
+                                        <select class="form-select form-select-sm" name="method" id="methodSelect" required>
+                                            <option value="average">Average</option>
+                                            <option value="min">Minimum</option>
+                                            <option value="max">Maximum</option>
+                                            <option value="absdiff">Absolute Difference</option>
+                                            <option value="multiply">Multiply</option>
+                                            <option value="screen">Screen</option>
+                                            <option value="laplace">Laplace</option>
+                                            <option value="pca">PCA</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success fw-semibold run-button">
+                                        Run
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fused Image Section -->
+                    <div class="col-lg-3">
+                        <div class="h-100 d-flex flex-column">
+                            <h4 class="mb-3 section-header">Result</h4>
+
+                            <!-- Result Display -->
+                            <div class="result-container flex-grow-1 d-flex flex-column justify-content-start">
+                                <img id="fusedPreview" src="" alt="Result" 
+                                    class="img-fluid fused-img" style="display: none;">
+                                <div id="loadingMessage" class="text-center text-muted d-none">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">Processing images...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metrics Section -->
+                    <div class="col-lg-3">
+                        <div class="h-100 d-flex flex-column">
+                            <h4 class="mb-3 section-header">Performance Metrics</h4>
+                            <div id="metricsContainer" class="metrics-container flex-grow-1" style="display: none;">
+                                <!-- Metrics dynamically inserted here -->
+                            </div>
+                            <button id="downloadMetrics" class="btn mt-3 w-100"
+                                style="display: none;">
+                                Download Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
